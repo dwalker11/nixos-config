@@ -122,10 +122,12 @@
     chromium
     gparted
     git
+    httpie
     lf
     tree
     vim
     vscode
+    vlc
     wget
     zsh
   ];
