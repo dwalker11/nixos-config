@@ -68,7 +68,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".config/starship.toml".source = files/starship.toml;
+    ".config/starship.toml".source = dotfiles/starship.toml;
   };
 
   # Home Manager can also manage your environment variables through
