@@ -59,10 +59,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -82,11 +78,19 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  # Enable docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.enableOnBoot = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.devon = {
     isNormalUser = true;
     description = "Devon";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kate
