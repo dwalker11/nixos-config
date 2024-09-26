@@ -122,18 +122,27 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    btop
     chromium
     gparted
-    git
-    httpie
-    lf
-    tree
+    qmk
+    vial
     vim
     vscode
     vlc
+
+    # Cli-based
+    btop
     wget
+
+    # Comunication
+    slack
+    zoom-us
+
+    # Shells
     zsh
+
+    # Version Control
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
