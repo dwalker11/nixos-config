@@ -90,6 +90,7 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 
   programs.git = {
@@ -155,6 +156,7 @@
     autocd = true;
     autosuggestion.enable = true;
     history.share = true;
+    history.ignoreAllDups = true;
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = false;
