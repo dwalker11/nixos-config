@@ -68,6 +68,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
+    ".config/kitty/kitty.conf".source = dotfiles/kitty.conf;
     ".config/starship.toml".source = dotfiles/starship.toml;
   };
 
