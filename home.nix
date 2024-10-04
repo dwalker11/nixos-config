@@ -73,7 +73,9 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".config/starship.toml".source = dotfiles/starship.toml;
+    ".config/alacritty/alacritty.toml".source = dotfiles/alacritty.toml;
+    ".config/kitty/kitty.conf".source = dotfiles/kitty.conf;
+    # ".config/starship.toml".source = dotfiles/starship.toml;
   };
 
   # Home Manager can also manage your environment variables through
@@ -95,44 +97,6 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-  };
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      import = [
-        # "~/.config/alacritty/themes/catppuccin-latte.toml"
-        # "~/.config/alacritty/themes/catppuccin-frappe.toml"
-        "~/.config/alacritty/themes/catppuccin-macchiato.toml"
-        # "~/.config/alacritty/themes/catppuccin-mocha.toml"
-      ];
-
-      env = {
-        TERM = "xterm-256color";
-      };
-
-      font = {
-        size = 10;
-        normal.style = "Regular";
-        normal.family = "Hack Nerd Font";
-      };
-
-      window = {
-        opacity = 0.98;
-        padding.x = 20;
-        padding.y = 20;
-        dynamic_padding = true;
-      };
-
-      selection = {
-        # save_to_clipboard = true;
-      };
- 
-      cursor = {
-        style.shape = "Block"; # Beam
-        style.blinking = "On";
-      };
-    };
   };
 
   programs.git = {
