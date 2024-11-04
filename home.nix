@@ -37,21 +37,27 @@
 
     # Cli Tools
     bat
+    cmatrix
     fd
     fzf
     lf
+    tree
+
+    # Editors
+    lunarvim
+    neovim
+
+    # Programming Language
+    go
 
     # Programming Tools
+    gh
     httpie
 
     # Terminals
     kitty
     starship
     tmux
-
-    # Editors
-    lunarvim
-    neovim
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
