@@ -170,6 +170,12 @@
       autoload -U compinit && compinit
     '';
     initExtra = ''
+      # The next line updates PATH for the Google Cloud SDK.
+      if [ -f '/Users/devonwalker/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/devonwalker/google-cloud-sdk/path.zsh.inc'; fi
+
+      # The next line enables shell command completion for gcloud.
+      if [ -f '/Users/devonwalker/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/devonwalker/google-cloud-sdk/completion.zsh.inc'; fi
+
       eval "$(starship init zsh)"
     '';
   };
