@@ -75,7 +75,7 @@
     # '';
 
     ".config/kitty/kitty.conf".source = dotfiles/kitty.conf;
-    ".config/starship.toml".source = dotfiles/starship.toml;
+    # ".config/starship.toml".source = dotfiles/starship.toml;
   };
 
   # Home Manager can also manage your environment variables through
