@@ -48,6 +48,10 @@
     lunarvim
     neovim
 
+    # Programming Languages
+    go
+    nodejs_22
+
     # Programming Tools
     gh
     httpie

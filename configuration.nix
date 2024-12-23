@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, grubThemes, ... }:
 
 {
   imports =
@@ -17,7 +17,7 @@
     grub.efiSupport = true;
     grub.device = "nodev";
     grub.useOSProber = true;
-    # grub.theme = grubThemes.packages.${pkgs.system}.nixos;
+    grub.theme = grubThemes.packages.${pkgs.system}.nixos;
   };
 
   networking.hostName = "winterfell"; # Define your hostname.
@@ -129,6 +129,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     chromium
+    dbeaver-bin
     gparted
     qmk
     vial
