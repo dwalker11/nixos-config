@@ -95,8 +95,9 @@
   #  /etc/profiles/per-user/devonwalker/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    EDITOR = "vim";
+    VISUAL = "vim";
+    TERM = "xterm-256color";
   };
 
   programs.git = {
@@ -111,14 +112,19 @@
   programs.tmux = {
     enable = true;
     mouse = true;
+    clock24 = false;
+    baseIndex = 1;
+    # prefix = 'C-Space';
     sensibleOnTop = true;
+    terminal = "xterm-256color";
     plugins = with pkgs; [
       tmuxPlugins.yank
       {
         plugin = tmuxPlugins.dracula;
         extraConfig = ''
-          set -g @dracula-show-battery false
-          set -g @dracula-show-powerline true
+          set -g @dracula-show-left-icon "#S"
+          set -g @dracula-show-left-icon-padding 1
+          set -g @dracula-plugins "git time"
           set -g @dracula-refresh-rate 10
         '';
       }
@@ -135,11 +141,13 @@
       bind-key j select-pane -D
 
       # Open panes in the current directory
-      bind '"' split-window -v -c "#{pane_current_path}"
-      bind % split-window -h -c "#{pane_current_path}"
+      bind - split-window -vc "#{pane_current_path}"
+      bind | split-window -hc "#{pane_current_path}"
+      # unbind '"'
+      # unbind %
 
-      # Set status bar to the top position
-      set-option -g status-position top
+      # panes
+      set -g status-position top
     '';
   };
 
