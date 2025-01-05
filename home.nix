@@ -42,10 +42,12 @@
     fzf
     lf
     tree
+    wget
 
     # Editors
-    lunarvim
     neovim
+    lazygit
+    ripgrep
 
     # Programming Language
     go
@@ -55,8 +57,10 @@
     httpie
 
     # Terminals
-    kitty
+    fish
+    nushell
     starship
+    kitty
     tmux
   ];
 
