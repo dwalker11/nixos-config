@@ -129,7 +129,8 @@
           set -g @dracula-show-left-icon "#S"
           set -g @dracula-show-left-icon-padding 1
           set -g @dracula-plugins "git time"
-          set -g @dracula-refresh-rate 10
+          set -g @dracula-refresh-rate 5
+          set -g @dracula-show-empty-plugins false
         '';
       }
     ];
