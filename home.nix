@@ -51,6 +51,7 @@
 
     # Programming Language
     go
+    openjdk21
 
     # Programming Tools
     gh
