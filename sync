@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-stow -t ~/.config/home-manager home-manager 
-
+stow -t ~/.config/home-manager home-manager
