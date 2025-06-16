@@ -64,20 +64,20 @@
       "--layout reverse"
       "--info right"
     ];
-    colors = {
-      fg = "#cbccc6";
-      "fg+" = "#707a8c";
-      bg = "#1f2430"; 
-      "bg+" = "#191e2a";
-      hl = "#707a8c"; 
-      "hl+" = "#ffcc66";
-      info = "#73d0ff";
-      prompt = "#707a8c";
-      pointer = "#cbccc6";
-      marker = "#73d0ff";
-      spinner = "#73d0ff";
-      header = "#d4bfff";
-    };
+    # colors = {
+    #   fg = "#cbccc6";
+    #   "fg+" = "#707a8c";
+    #   bg = "#1f2430"; 
+    #   "bg+" = "#191e2a";
+    #   hl = "#707a8c"; 
+    #   "hl+" = "#ffcc66";
+    #   info = "#73d0ff";
+    #   prompt = "#707a8c";
+    #   pointer = "#cbccc6";
+    #   marker = "#73d0ff";
+    #   spinner = "#73d0ff";
+    #   header = "#d4bfff";
+    # };
   };
 
   programs.yazi = {
@@ -90,10 +90,10 @@
       };
     };
     theme = {
-      flavor = {
-        dark = "vscode-dark-plus";
-        light = "vscode-light-plus";
-      };
+      # flavor = {
+      #   dark = "vscode-dark-plus";
+      #   light = "vscode-light-plus";
+      # };
     };
     flavors = {
       vscode-dark-plus = pkgs.fetchFromGitHub {
