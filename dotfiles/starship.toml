@@ -1,164 +1,269 @@
-[aws]
-symbol = "  "
+add_newline = true
+continuation_prompt = "[▸▹ ](dimmed white)"
 
-[buf]
-symbol = " "
+format = """
+$sudo\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$fill\
+$time\
+$line_break\
+$nix_shell\
+$container\
+$env_var\
+$jobs\
+$character"""
+
+right_format = """
+$aws\
+$azure\
+$gcloud\
+$docker_context\
+$kubernetes\
+$terraform\
+$vagrant\
+$package\
+$bun\
+$c\
+$cpp\
+$cmake\
+$dart\
+$deno\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nodejs\
+$ocaml\
+$php\
+$python\
+$ruby\
+$rust\
+$scala\
+$swift\
+$zig"""
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[directory]
+style = "blue bold"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+# ---
+
+[sudo]
+symbol = "⋈┈"
+format = "[$symbol]($style)"
+style = "bold italic bright-purple"
+disabled = false
+
+[username]
+format = "[$user]($style) "
+style_user = "bright-yellow bold"
+style_root = "purple bold"
+show_always = false
+disabled = false
+
+[hostname]
+format = "[$ssh_symbol$hostname]($style)[ :: ](bold purple)"
+style = "bold white"
+ssh_only = false
+disabled = false
+
+[jobs]
+symbol = "[▶](blue italic)"
+format = "[$symbol$number]($style) "
+style = "white"
+
+[localip]
+format = " ◯[$localipv4](bold magenta)"
+ssh_only = true
+disabled = false
+
+[time]
+format = " [$time]($style)"
+style = "dimmed white"
+time_format = "%R"
+utc_time_offset = "local"
+disabled = false
+
+# Cloud provider configurations
+
+[aws]
+symbol = "  "
+format = " [aws](italic) [$symbol $profile $region]($style)"
+style = "bold blue"
+
+[azure]
+symbol = " "
+
+[gcloud]
+symbol = "󱇶 "
+format = " [$symbol$active]($style)"
+
+# Package-related configurations
+
+[package]
+symbol = "󰏗 "
+format = " [pkg](italic dimmed) [$symbol$version]($style)"
+style = "dimmed yellow bold"
+version_format = "${raw}"
+
+[docker_context]
+symbol = " "
+format = " docker [$symbol$context]($style)"
+
+[nix_shell]
+symbol = "󱄅"
+format = "[$symbol nix⎪$state⎪]($style) [$name](italic dimmed white)"
+style = "bold italic dimmed blue"
+impure_msg = "[⌽](bold dimmed red)"
+pure_msg = "[⌾](bold dimmed green)"
+unknown_msg = "[◌](bold dimmed ellow)"
+
+# Language-specific configurations
+
+[bun]
+symbol = " "
 
 [c]
 symbol = " "
+format = " [$symbol($version(-$name))]($style)"
 
-[conda]
-symbol = " "
+[cpp]
+symbol = " "
+format = " [$symbol($version(-$name))]($style)"
 
-[crystal]
-symbol = " "
+[cmake]
+symbol = " "
 
 [dart]
 symbol = " "
+format = " dart [$symbol($version)]($style)"
 
-[directory]
-read_only = " 󰌾"
-
-[docker_context]
-symbol = " "
+[deno]
+symbol = " "
+format = " deno [$version](green bold)"
+version_format = "${raw}"
 
 [elixir]
 symbol = " "
+format = " exs [$symbol $version OTP $otp_version ]($style)"
 
 [elm]
 symbol = " "
+format = " elm [$symbol($version)]($style)"
 
-[fennel]
-symbol = " "
-
-[fossil_branch]
-symbol = " "
-
-[git_branch]
-symbol = " "
+[erlang]
+symbol = " "
 
 [golang]
 symbol = " "
+format = " go [$symbol($version)]($style)"
 
-[guix_shell]
-symbol = " "
+[gradle]
+symbol = " "
 
 [haskell]
 symbol = " "
-
-[haxe]
-symbol = " "
-
-[hg_branch]
-symbol = " "
-
-[hostname]
-ssh_symbol = " "
+format = " hs [$symbol($version)]($style)"
 
 [java]
 symbol = " "
+format = " java [${symbol}(${version})]($style)"
 
 [julia]
 symbol = " "
+format = " jl [$symbol($version)]($style)"
 
 [kotlin]
 symbol = " "
 
 [lua]
 symbol = " "
-
-[memory_usage]
-symbol = "󰍛 "
-
-[meson]
-symbol = "󰔷 "
-
-[nim]
-symbol = "󰆥 "
-
-[nix_shell]
-symbol = " "
+format = " [lua](italic) [${symbol}${version}]($style)"
+style = "bold bright-yellow"
+version_format = "${raw}"
 
 [nodejs]
-symbol = " "
+symbol = " "
+format = " [node](italic) [$symbol($version)](bold bright-green)"
+version_format = "${raw}"
+detect_files = ["package-lock.json", "yarn.lock"]
+detect_folders = ["node_modules"]
+detect_extensions = []
 
 [ocaml]
 symbol = " "
 
-[os.symbols]
-Alpaquita = " "
-Alpine = " "
-AlmaLinux = " "
-Amazon = " "
-Android = " "
-Arch = " "
-Artix = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Kali = " "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-RockyLinux = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Void = " "
-Windows = "󰍲 "
-
-[package]
-symbol = "󰏗 "
-
-[perl]
-symbol = " "
-
 [php]
 symbol = " "
 
-[pijul_channel]
-symbol = " "
-
 [python]
 symbol = " "
-
-[rlang]
-symbol = "󰟔 "
+format = " [py](italic) [${symbol}${version}]($style)"
+style = "bold bright-yellow"
+version_format = "${raw}"
 
 [ruby]
 symbol = " "
+format = " [rb](italic) [${symbol}${version}]($style)"
+style = "bold red"
+version_format = "${raw}"
 
 [rust]
-symbol = " "
+symbol = "󱘗 "
+format = " [rs](italic) [$symbol$version]($style)"
+style = "bold red"
+version_format = "${raw}"
 
 [scala]
 symbol = " "
 
 [swift]
 symbol = " "
+format = " [sw](italic) [${symbol}${version}]($style)"
+style = "bold bright-red"
+version_format = "${raw}"
 
 [zig]
 symbol = " "

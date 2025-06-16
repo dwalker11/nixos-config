@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./modules/shell.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "devonwalker";
@@ -35,34 +39,18 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    # Cli Tools
-    bat
-    cmatrix
-    fd
-    fzf
-    lf
-    tree
-    wget
-
-    # Editors
-    neovim
-    lazygit
-    ripgrep
+    # Applications
+    yt-dlp
 
     # Programming Language
     go
     openjdk21
+    # pnpm
 
     # Programming Tools
     gh
     httpie
-
-    # Terminals
-    fish
-    nushell
-    starship
-    kitty
-    tmux
+    # jq
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -78,9 +66,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-
-    ".config/kitty/kitty.conf".source = dotfiles/kitty.conf;
-    # ".config/starship.toml".source = dotfiles/starship.toml;
   };
 
   # Home Manager can also manage your environment variables through
@@ -114,84 +99,8 @@
     };
   };
 
-  programs.tmux = {
-    enable = true;
-    mouse = true;
-    clock24 = false;
-    baseIndex = 1;
-    # prefix = 'C-Space';
-    sensibleOnTop = true;
-    terminal = "xterm-256color";
-    plugins = with pkgs; [
-      tmuxPlugins.yank
-      {
-        plugin = tmuxPlugins.dracula;
-        extraConfig = ''
-          set -g @dracula-show-left-icon "#S"
-          set -g @dracula-show-left-icon-padding 1
-          set -g @dracula-plugins "git time"
-          set -g @dracula-refresh-rate 5
-          set -g @dracula-show-empty-plugins false
-        '';
-      }
-    ];
-    extraConfig = ''
-      # Reload config file
-      unbind r
-      bind r source-file ~/.config/tmux/tmux.conf
-
-      # Switch panes using Alt-arrow without prefix
-      bind-key h select-pane -L
-      bind-key l select-pane -R
-      bind-key k select-pane -U
-      bind-key j select-pane -D
-
-      # Open panes in the current directory
-      bind - split-window -vc "#{pane_current_path}"
-      bind | split-window -hc "#{pane_current_path}"
-      # unbind '"'
-      # unbind %
-
-      # panes
-      set -g status-position top
-    '';
-  };
-
-  programs.zsh = {
-    enable = true;
-    antidote = {
-      enable = true;
-      useFriendlyNames = true;
-      plugins = [
-        "rupa/z"
-        "MichaelAquilina/zsh-you-should-use"
-        "ohmyzsh/ohmyzsh path:plugins/common-aliases"
-        "ohmyzsh/ohmyzsh path:plugins/fzf"
-        "ohmyzsh/ohmyzsh path:plugins/git"
-        "ohmyzsh/ohmyzsh path:plugins/sudo"
-        "ohmyzsh/ohmyzsh path:plugins/tmux"
-        "ohmyzsh/ohmyzsh path:plugins/web-search"
-      ];
-    };
-    autocd = true;
-    autosuggestion.enable = true;
-    history.share = true;
-    history.ignoreAllDups = true;
-    historySubstringSearch.enable = true;
-    syntaxHighlighting.enable = true;
-    enableCompletion = false;
-    initExtraFirst = ''
-      autoload -U compinit && compinit
-    '';
-    initExtra = ''
-      # The next line updates PATH for the Google Cloud SDK.
-      if [ -f '/Users/devonwalker/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/devonwalker/google-cloud-sdk/path.zsh.inc'; fi
-
-      # The next line enables shell command completion for gcloud.
-      if [ -f '/Users/devonwalker/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/devonwalker/google-cloud-sdk/completion.zsh.inc'; fi
-
-      eval "$(starship init zsh)"
-    '';
+  programs.ssh = {
+    # enable = true;
   };
 
   # Let Home Manager install and manage itself.
