@@ -239,6 +239,14 @@
           # Valid choice are : "full", "short", or "dir-only"
           ROUNDY_DIR_MODE="full"
 
+          # pnpm
+          export PNPM_HOME="/Users/devonwalker/Library/pnpm"
+          case ":$PATH:" in
+            *":$PNPM_HOME:"*) ;;
+            *) export PATH="$PNPM_HOME:$PATH" ;;
+          esac
+          # pnpm end
+
           # The next line updates PATH for the Google Cloud SDK.
           if [ -f '/Users/devonwalker/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/devonwalker/google-cloud-sdk/path.zsh.inc'; fi
 
