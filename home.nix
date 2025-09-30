@@ -40,6 +40,8 @@
     # '')
 
     # Applications
+    qmk
+    nh
     yt-dlp
 
     # Programming Language
@@ -50,7 +52,6 @@
     # Programming Tools
     gh
     httpie
-    # jq
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
