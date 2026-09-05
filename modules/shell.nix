@@ -44,7 +44,7 @@
 
       mouse-hide-while-typing = true
       # shell-integration = fish
-      # command = /Users/devonwalker/.nix-profile/bin/fish 
+      # command = /Users/devonwalker/.nix-profile/bin/fish
 
       keybind = global:opt+grave_accent=toggle_quick_terminal
     '';
@@ -69,9 +69,9 @@
     # colors = {
     #   fg = "#cbccc6";
     #   "fg+" = "#707a8c";
-    #   bg = "#1f2430"; 
+    #   bg = "#1f2430";
     #   "bg+" = "#191e2a";
-    #   hl = "#707a8c"; 
+    #   hl = "#707a8c";
     #   "hl+" = "#ffcc66";
     #   info = "#73d0ff";
     #   prompt = "#707a8c";
@@ -174,6 +174,8 @@
       gc = "git commit";
       gp = "git push";
       gl = "git pull";
+      glgg = "git log --graph";
+      glgga = "git log --graph --all";
       gb = "git branch";
       gco = "git checkout";
       gd = "git diff";
@@ -187,7 +189,7 @@
     shellAbbrs = {};
     functions = {
       fish_greeting = ''
-        fastfetch
+        # fastfetch
       '';
       backup_file = ''
         function rename_old --description "Rename a file by appending .old extension"
@@ -197,22 +199,22 @@
                 echo "Renames the specified file by appending '.old' to its name"
                 return 1
             end
-            
+
             set file $argv[1]
-            
+
             # Check if file exists
             if not test -e "$file"
                 echo "Error: File '$file' does not exist"
                 return 1
             end
-            
+
             # Check if target file already exists
             set new_name "$file.old"
             if test -e "$new_name"
                 echo "Error: Target file '$new_name' already exists"
                 return 1
             end
-            
+
             # Rename the file
             if mv "$file" "$new_name"
                 echo "Successfully renamed '$file' to '$new_name'"
@@ -282,7 +284,6 @@
             *":$PNPM_HOME:"*) ;;
             *) export PATH="$PNPM_HOME:$PATH" ;;
           esac
-          # pnpm end
 
           # Google Cloud
           if [ -f '/Users/devonwalker/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/devonwalker/google-cloud-sdk/path.zsh.inc'; fi
@@ -300,6 +301,9 @@
           for file in ~/.config/zsh/conf.d/*.zsh(N); do
             source "$file"
           done
+
+          # Shell greeting
+          fastfetch
         '';
       in lib.mkMerge [ zshConfigEarlyInit zshConfig ];
   };
