@@ -93,16 +93,22 @@
 
   programs.git = {
     enable = true;
-    userName = "Devon";
-    userEmail = "devon.dana@gmail.com";
-    extraConfig = {
+    settings = {
+      user.name = "Devon";
+      user.email = "devon.dana@gmail.com";
       push.autoSetupRemote = true;
     };
   };
 
   programs.ssh = {
-    # enable = true;
+    enable = true;
+    enableDefaultConfig = false;
+    settings = {
+      "*".AddKeysToAgent = "yes";
+    };
   };
+
+  services.ssh-agent.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

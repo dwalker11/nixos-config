@@ -30,7 +30,7 @@
     ".config/starship-fish.toml".source = ../dotfiles/starship-fish.toml;
     ".config/starship-zsh.toml".source = ../dotfiles/starship-zsh.toml;
 
-    ".config/ghostty/config".text = ''
+    "~/Library/Application\ Support/com.mitchellh.ghostty/config".text = ''
       theme = hopscotch.256
 
       font-family = "FiraCode Nerd Font Mono"
