@@ -30,7 +30,12 @@
     ".config/starship-fish.toml".source = ../dotfiles/starship-fish.toml;
     ".config/starship-zsh.toml".source = ../dotfiles/starship-zsh.toml;
 
-    "~/Library/Application\ Support/com.mitchellh.ghostty/config".text = ''
+    ".config/tmux/plugins/tmux-dotbar/dotbar.tmux" = {
+      source = ../dotfiles/dotbar.tmux;
+      executable = true;
+    };
+
+    "./Library/Application\ Support/com.mitchellh.ghostty/config".text = ''
       theme = hopscotch.256
 
       font-family = "FiraCode Nerd Font Mono"
@@ -124,16 +129,16 @@
     terminal = "xterm-256color";
     plugins = with pkgs; [
       tmuxPlugins.yank
-      {
-        plugin = tmuxPlugins.dracula;
-        extraConfig = ''
-          set -g @dracula-show-left-icon "#S"
-          set -g @dracula-show-left-icon-padding 1
-          set -g @dracula-plugins "git time"
-          set -g @dracula-refresh-rate 5
-          set -g @dracula-show-empty-plugins false
-        '';
-      }
+      # {
+      #   plugin = tmuxPlugins.dracula;
+      #   extraConfig = ''
+      #     set -g @dracula-show-left-icon "#S"
+      #     set -g @dracula-show-left-icon-padding 1
+      #     set -g @dracula-plugins "git time"
+      #     set -g @dracula-refresh-rate 5
+      #     set -g @dracula-show-empty-plugins false
+      #   '';
+      # }
     ];
     extraConfig = ''
       # Reload config file
@@ -154,6 +159,9 @@
 
       # panes
       set -g status-position top
+
+      # theme
+      run-shell ~/.config/tmux/plugins/tmux-dotbar/dotbar.tmux
     '';
   };
 
