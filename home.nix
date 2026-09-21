@@ -105,6 +105,11 @@
     enableDefaultConfig = false;
     settings = {
       "*".AddKeysToAgent = "yes";
+      "leo" = {
+        HostName = "leo.local";
+        User = "devon";
+        IdentityFile = "~/.ssh/id_ed25519";
+      };
     };
   };
 
