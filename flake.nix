@@ -2,31 +2,37 @@
   description = "Devon's NixOS flake configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-grub-themes, ... }: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, ... }@inputs:
     let
-      lib = nixpkgs.lib;
       system = "x86_64-linux";
+      nixpkgs-lib = nixpkgs-unstable.lib;
+      home-manager-lib = home-manager.lib;
       pkgs = nixpkgs.legacyPackages.${system};
-      grubThemes = nixos-grub-themes;
     in {
-      nixosConfigurations = {
-        winterfell = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit grubThemes; };
-          modules = [ ./configuration.nix ];
-        };
+      nixosConfigurations."nixos" = nixpkgs-lib.nixosSystem {
+        inherit system;
+
+        specialArgs = { inherit inputs; };
+
+        modules = [
+          ./configuration.nix
+          nixos-hardware.nixosModules.microsoft-surface-pro-intel
+        ];
       };
-      homeConfigurations = {
-        devon = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ];
-        };
+
+      homeConfigurations."devon" = home-manager-lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [
+          ./home.nix
+        ];
       };
     };
 }
