@@ -267,25 +267,6 @@
           autoload -U compinit && compinit
         '';
         zshConfig = lib.mkOrder 1500 ''
-          # Working Directory Info Mode
-          # Valid choice are : "full", "short", or "dir-only"
-          # ROUNDY_DIR_MODE="full"
-
-          # pnpm
-          export PNPM_HOME="/Users/devonwalker/Library/pnpm"
-          case ":$PATH:" in
-            *":$PNPM_HOME:"*) ;;
-            *) export PATH="$PNPM_HOME:$PATH" ;;
-          esac
-
-          # Google Cloud
-          if [ -f '/Users/devonwalker/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/devonwalker/google-cloud-sdk/path.zsh.inc'; fi
-          if [ -f '/Users/devonwalker/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/devonwalker/google-cloud-sdk/completion.zsh.inc'; fi
-          # End Google Cloud
-
-          # Zoxide
-          eval "$(zoxide init zsh)"
-
           # Starship config
           export STARSHIP_CONFIG=~/.config/starship-zsh.toml
           eval "$(starship init zsh)"

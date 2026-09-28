@@ -18,7 +18,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "26.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -31,7 +31,16 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    (pkgs.nerdfonts.override {
+      fonts = [
+        "FantasqueSansMono"
+        "FiraCode"
+        "FiraMono"
+        "Hack"
+        "Iosevka"
+        "JetBrainsMono"
+      ];
+    })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -43,6 +52,10 @@
     # Applications
     nh
     yt-dlp
+
+    # Keyboard
+    qmk
+    vial
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -81,6 +94,10 @@
     VISUAL = "vim";
     TERM = "xterm-256color";
   };
+
+  fonts.fontconfig.enable = true;
+
+  # gtk = {};
 
   programs.ssh = {
     enable = true;
