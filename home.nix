@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./modules/dev.nix
     ./modules/shell.nix
   ];
 
@@ -43,15 +44,6 @@
     qmk
     nh
     yt-dlp
-
-    # Programming Language
-    go
-    openjdk21
-    # pnpm
-
-    # Programming Tools
-    gh
-    httpie
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -89,15 +81,6 @@
     EDITOR = "vim";
     VISUAL = "vim";
     TERM = "xterm-256color";
-  };
-
-  programs.git = {
-    enable = true;
-    settings = {
-      user.name = "Devon";
-      user.email = "devon.dana@gmail.com";
-      push.autoSetupRemote = true;
-    };
   };
 
   programs.ssh = {

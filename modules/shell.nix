@@ -6,22 +6,28 @@
     bat
     cmatrix
     eza
-    fastfetch
     fd
     fzf
     # jq
+    # lf
     ripgrep
+    # tree
     wget
     yazi
+    yt-dlp
     zoxide
 
     # Editor
     neovim
     lazygit
+    ripgrep
 
-    # Shell Evironment
+    # Shell
     fish
     nushell
+
+    # Shell Evironment
+    fastfetch
     starship
     tmux
   ];
